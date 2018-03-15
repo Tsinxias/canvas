@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>My canvas</h1>
+
+  <canvas id="myCanvas" width="340px" height="240px">
+  Your browser doesn't support canvas so you can't see this awesome image!
+
+
+
+  </canvas>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem consectetur debitis a, ad hic dignissimos maxime autem facilis ipsa excepturi doloremque possimus recusandae vitae omnis fuga. Porro, repellat corrupti tempora.</p>
+
+
+  <script>
+
+    let myCanvas = document.querySelector('#myCanvas');
+
+    //draw in 2D
+    let context = myCanvas.getContext("2d");
+
+    console.log(context);
+
+
+    /*
+    let context = myCanvas.getContext("2d");
+
+    context.beginPath(); --> start shape == initialisation
+    context.moveTo(x, y); --> starting point
+    context.lineTo(x, y); --> end point
+    context.closePath(); --> end shape
+    context.stroke() or context.fill() --> create lines or fill in the shape
+
+    context.fillStyle = "red";
+    context.fillRect(30, 100, 100, 100); --> create a rectangle/square
+
+    function line (startX, startY, endX, endY) {
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.lineTo(endX, endY);
+      context.stroke();
+      context.closePath();
+    };
+
+    line(50, 50, 150, 200);
+
+    function rect (color, x, y, w, h) {
+      context.fillStyle = color;
+      context.fillRect(x, y, w, h);
+    }
+
+    rect("yellow", 50, 50, 350, 200);
+
+
+    //----------------ANIMATION------------------//
+    let startX = 30;
+    let startY = 40;
+    let endX = 50;
+    let endY = 60;
+
+    function update() {
+      line(startX, startY, endX, endY);
+      startX += 10;
+      startY += 10;
+      endX += 10;
+      endY += 10;
+    }
+
+    setInterval(update, 1000/24);
+
+
+    //------------------CLEAR--------------------//
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    //------------------BOUNCE-----------------------//
+    let velocityX = -1;
+    let velocityY = 0;
+
+    if (circleX < 0 || circleX > canvasWidth) {
+    velocityX *= -1;
+  }
+  if (circleX < 0 || circleX > canvasHeight) {
+  velocityX *= -1;
+}
+    example:*/
+      context.beginPath();
+      context.moveTo(50, 50);
+      context.lineTo(200, 200);
+      context.moveTo(200, 50);
+      context.lineTo(50, 200);
+      context.stroke();
+      context.closePath();
+  </script>
+
+</body>
+</html>

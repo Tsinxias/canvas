@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Flag</h2>
+  <canvas id="canvasFlag" width="640px" height="480px">
+
+  </canvas>
+
+
+  <script type="text/javascript">
+    let flag = document.querySelector('#canvasFlag');
+    let context = flag.getContext('2d');
+
+    function curveFlag(startX, startY, width, height, curveUp, curveDown, lineW) {
+      let curveX = startX/2 + width/3;
+      let curveX2 = startX/2 + width/3*2;
+      let lineRightY = height + startY;
+      let lineLeftY = height + startY;
+      let curveUp2 = height + curveUp;
+      let curveDown2 = height + curveDown;
+
+      let x1 = startY-6;
+      let y1 = lineRightY-6;
+
+      let x2 = startY+6;
+      let y2 = lineRightY+6;
+
+      context.beginPath();
+      context.moveTo(startX, startY);//starting point
+      context.bezierCurveTo(curveX, curveUp, curveX2, curveDown, width, startY);//above curve
+      context.lineTo(width, lineRightY); //right line
+
+
+      context.moveTo(startX, startY);//return on the starting point
+      context.lineTo(startX, lineRightY);//left line
+      context.bezierCurveTo(curveX, curveUp2, curveX2, curveDown2, width, lineRightY);//below curve
+
+      context.moveTo(curveX, x1);
+      context.lineTo(curveX, y1);// lines inside flag
+
+      context.moveTo(curveX2, x2);
+      context.lineTo(curveX2, y2);// lines inside flag
+
+      context.lineWidth = lineW;
+      context.stroke();
+      context.closePath();
+    };
+
+    // function insideFlag(startX, startY, width, height, lineW) {
+    //   let curveX = width/3;
+    //   let curveX2 = width/3*2;
+    //   let lineRightY = height + startY;
+    //
+    //   context.beginPath();
+    //   context.moveTo(startX, startY);
+    //   context.lineTo(startX, lineRightY);
+    //
+    //   context.moveTo(curveX, startY);
+    //   context.lineTo(curveX, lineRightY);
+    //
+    //   context.moveTo(curveX2, startY);
+    //   context.lineTo(curveX2, lineRightY);
+    //   context.lineWidth = lineW;
+    //   context.fillStyle = 'red';
+    //   context.fill();
+    //   // closePath();
+    // };
+
+    curveFlag(50, 50, 600, 300, 20, 80, 2);
+    // insideFlag(50, 50, 400, 200, 2);
+  </script>
+</body>
+</html>

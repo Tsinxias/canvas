@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BOAT</title>
+</head>
+<body>
+  <h2>Boat</h2>
+
+  <canvas id="boatCanvas" width="600px", height="400px">
+
+  </canvas>
+
+  <script type="text/javascript">
+    let boat = document.getElementById('boatCanvas');
+    let context = boat.getContext('2d');
+
+    function barque(startX, startY, width, height) {
+      let width1 = width/3;
+      let width2 = width/3*2;
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.lineTo(width, startY);
+      context.lineTo(width2, height);
+      context.lineTo(width1, height);
+      context.closePath();
+      context.stroke()
+    }
+
+    function poteau(startY, width, height) {
+      let widthMid = width/2;
+      context.beginPath();
+      context.moveTo(widthMid, startY);
+      context.lineTo(widthMid, height);
+      context.closePath();
+      context.stroke()
+    }
+
+    function flag(width, startY, height) {
+      let width1 = width/3;
+      let width2 = width/3*2;
+      let widthMid = width/2;
+
+      context.beginPath();
+      context.moveTo(widthMid, startY);
+      context.lineTo(width1, height);
+      context.lineTo(width2, height);
+      context.closePath();
+      context.stroke()
+    }
+    barque(0, 200, 300, 300);
+    poteau(200, 300, 0);
+    flag(300, 0, 100);
+  </script>
+</body>
+</html>

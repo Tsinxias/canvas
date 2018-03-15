@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas Grid</title>
+</head>
+<body>
+  <h2>grid</h2>
+
+  <canvas id="gridCanvas" width="400px" height="400px">
+
+  </canvas>
+
+  <script type="text/javascript">
+  let grid = document.querySelector('#gridCanvas');
+  let context = grid.getContext('2d');
+  function vertical(startX, startY, endX, endY) {
+    context.beginPath();
+      let startX1 = startX+i;
+      let startY1 = startY+i;
+      let endX1 = endX+i;
+      let endY1 = endY+i;
+
+      context.moveTo(startX1, startY);
+      context.lineTo(endX1, endY);
+      context.stroke();
+      context.closePath();
+  }
+
+  function horizontale(startX, startY, endX, endY) {
+    context.beginPath();
+      let startX1 = startX+i;
+      let startY1 = startY+i;
+      let endX1 = endX+i;
+      let endY1 = endY+i;
+
+      context.moveTo(startX, startX1);
+      context.lineTo(endX, startY1);
+      context.stroke();
+      context.closePath();
+  }
+
+    for (var i = 0; i < 400; i+=50) {
+      vertical(50, 50, 50, 400);
+      horizontale(50, 50, 400, 50);
+    }
+
+
+    // grid.addEventListener('click', function(event) {
+    //   var x = event.offsetX;
+    //   var y = event.offsetY;
+    //   let restX = x % 50;
+    //   let newX = x - restX;
+    //
+    //   let restY = y % 50;
+    //   let newY = y - restY;
+    //   context.beginPath();
+    //   context.moveTo(50, 50);
+    //   context.fillStyle = 'red';
+    //   context.fillRect(newX, newY, 50, 50);
+    //   context.stroke();
+    //   context.closePath();
+    // });
+
+    grid.addEventListener('mousemove', function(event) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        context.beginPath();
+        context.moveTo(x, y);
+        let random = function() {
+          return Math.floor(Math.random()*255);
+        }
+        context.fillStyle = `rgba(${random()}, ${random()}, ${random()}, 1)`;
+        context.fillRect((x-25), (y-25), 50, 50);
+        context.fill();
+        context.stroke();
+        context.closePath();
+    })
+  </script>
+</body>
+</html>
